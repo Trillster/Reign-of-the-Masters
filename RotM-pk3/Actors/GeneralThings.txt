@@ -60,24 +60,6 @@ inventory.amount 1
 inventory.maxamount 1
 }
 
-actor TeamColor_CI : CustomInventory
-{
-states
-{
-Pickup:
-TNT1 A 0 A_JumpIfInventory("LightTeamFlag",1,"FireB")
-TNT1 A 0 A_JumpIfInventory("WilyTeamFlag",1,"FireR")
-TNT1 A 0 A_JumpIfInventory("CossackTeamFlag",1,"FireO")
-TNT1 A 0 A_JumpIfInventory("KingTeamFlag",1,"FireP")
-TNT1 A 0 A_JumpIfInventory("IsInGame",1,"FireX")
-TNT1 A 0
-
-Done:
-TNT1 A 0
-stop
-}
-}
-
 actor OnceC : Inventory
 {
 inventory.amount 1

@@ -6,6 +6,8 @@ actor BaseMM8BDMWep : Weapon
 	+WEAPON.DONTBOB
 	inventory.pickupsound "weapon/weaponup"
 	Scale 2.0
+	Inventory.ForbiddenTo "CustomWepMan"
+	+INVENTORY.RESTRICTABSOLUTELY
 	States
 	{
 	

@@ -1,4 +1,4 @@
-actor Quickman : ClassBase
+actor Quickman : CustomWepMan
 {
 player.displayname "quickman"
 player.startitem "MegaBuster"

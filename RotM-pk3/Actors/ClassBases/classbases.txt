@@ -4,4 +4,3 @@
 #include "Actors/ClassBases/classbase.txt"
 
 #include "Actors/ClassBases/classbase-flags.txt"
-#include "Actors/ClassBases/ClassHealthBase.txt"

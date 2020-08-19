@@ -1,1 +1,30 @@
 actor ClassBase : ClassBase2 {}
+
+actor CustomWepMan : ClassBase
+{
+player.startitem "NotBusterAmmo", 3
+player.startitem "mm8bdmplayer", 1
+states
+{
+Spawn:
+CUTM A 0
+CUTM B 1
+CUTM A 1
+Goto Spawn+2
+See:
+CUTM BCDE 5
+Goto Spawn
+Missile:
+CUTM F 5
+CUTM G 4
+goto Spawn
+}
+}
+
+actor NotBusterAmmo : Ammo
+{
+inventory.amount 1
+inventory.maxamount 3
+ammo.backpackamount 1
+ammo.backpackmaxamount 3
+}

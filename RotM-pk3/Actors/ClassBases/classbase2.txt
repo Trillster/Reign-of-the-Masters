@@ -1,5 +1,6 @@
 actor ClassBase2 : ClassBase1
 {
+damagefactor "TenguDash", 0.10 //this looks stupid atm but it'll make sense in v6
 States
 {
 //ey thx jax
