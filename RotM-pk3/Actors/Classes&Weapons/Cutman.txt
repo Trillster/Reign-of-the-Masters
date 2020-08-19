@@ -1,7 +1,7 @@
-actor Cutman : 85ClassBase
+actor Cutman : CustomWepMan
 {
 Player.ScoreIcon "C_01A0X"
-//player.startitem "LightHealthBar"
+
 player.displayname "Cutman"
 player.soundclass "cutmanc"
 player.startitem "RollingCutterBoss"
@@ -15,14 +15,9 @@ player.forwardmove 1.0, 1.0
 player.sidemove 0.98, 0.98
 player.jumpz 12
 
-/*player.startitem "SuperArmWeakness2", 1
+player.maxhealth 85
+health 85
 
-player.startitem "SuperArmWeakness", 1
-player.startitem "HardKnuckleWeakness", 1
-player.startitem "PowerStoneWeakness", 1
-player.startitem "AstroCrushWeakness", 1
-player.startitem "SpreadDrillWeakness", 1
-player.startitem "DeepDiggerWeakness", 1*/ 
 States
 {
 Spawn:
