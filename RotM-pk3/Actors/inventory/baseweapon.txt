@@ -1,0 +1,177 @@
+actor BaseMM8BDMWep : Weapon
+{
+	+WEAPON.AMMO_OPTIONAL
+	+WEAPON.ALT_AMMO_OPTIONAL
+	+WEAPON.ALT_USES_BOTH
+	+WEAPON.DONTBOB
+	inventory.pickupsound "weapon/weaponup"
+	Scale 2.0
+	States
+	{
+	
+	Altfire:
+		"----" A 1 A_JumpIfInventory("BusterAmmo", 1, "Fire")
+		"----" A 1 A_Jump(256, "NoAmmo")
+		wait
+	Flashloop:
+		TNT1 A 0
+		stop
+	NoFlash:
+		TNT1 A 0
+		stop
+	Sound.BusterCharge:
+		TNT1 A 9 A_PlaySoundEx("weapon/adapterchargeloop","Weapon",0)
+		TNT1 A 1 A_JumpIfInventory("WeaponCharge",1,"Sound.BusterCharge")
+		stop
+	}
+}
+
+// Used for Atomic Fire and other weapons that charge up
+actor WeaponCharge : Inventory
+{
+inventory.amount 1
+inventory.maxamount 5000
+}
+
+// Used for pretty much every shield in the game
+actor ShieldCheck : Inventory
+{
+inventory.amount 1
+inventory.maxamount 1
+}
+
+// These are used for Copy Vision and Remote Mine's aiming
+Actor TargetMarker : CustomInventory
+{
+Inventory.amount 1
+Inventory.MaxAmount 1
++AUTOACTIVATE
+States
+{
+Spawn:
+TNT1 A 1
+stop
+Use:
+//TNT1 A 0 A_FireCustomMissile("TargetTracer",0,0,0,16,0,0)
+TNT1 A 0 A_SpawnItemEx("TargetTracer", 0, 8, 32, Cos(pitch)*1000, 0, sin(-pitch)*1000,0)
+//TNT1 A 0 A_RailAttack(0,0,0,"none","none",RGF_SILENT|RGF_NOPIERCING, 0, "TargetAimPoint", 0, 0, 0) // For the future
+stop
+}
+}
+
+Actor TargetMarker2 : TargetMarker
+{
+states
+{
+Use:
+//TNT1 A 0 A_FireCustomMissile("TargetTracer",0,0,0,16,0,0)
+TNT1 A 0 A_SpawnItemEx("TargetTracer2", 0, 8, 32, Cos(pitch)*1000, 0, sin(-pitch)*1000,0)
+stop
+}
+}
+
+actor TargetTracer : FastProjectile
+{
+Radius 16
+Height 1
+PROJECTILE
+Speed 1000
+Damage(0)
+RenderStyle none
++DONTSPLASH
++DONTBLAST
++THRUGHOST
++SKYEXPLODE
++NOTARGETSWITCH
+States
+{
+Spawn:
+TNT1 A 5
+Goto Death
+Death:
+TNT1 A 0 
+TNT1 A 1 A_SpawnItemEx("TargetAimPoint", 0, 0, 0)  //Thing_SpawnNoFog(0,201,0,ACS_ExecuteWithResult(257, 0)+100) 
+stop
+}
+}
+
+actor TargetTracer2 : TargetTracer
+{
++THRUACTORS
+}
+
+actor TargetAimPoint
+{
+PROJECTILE
++NOINTERACTION
++NOCLIP
++RIPPER
+RenderStyle "NONE"
+Radius 16
+Height 1
+scale 2.5
+States
+{
+Spawn:
+TNT1 A 0 Thing_Remove(ACS_ExecuteWithResult(257, 0)+100)
+TNT1 A 0 Thing_ChangeTID(0, ACS_ExecuteWithResult(257, 0)+100)
+ERO3 YYYYYYYYYY 1 
+Stop
+Death:
+TNT1 A 0 
+stop
+}
+}
+
+// Used for Skull Barrier and shields that tank a specified number of hits
+actor ShieldHits : Inventory
+{
+	inventory.amount 1
+	inventory.maxamount 999
+}
+
+actor HitShieldProtection : PowerProtection
+{
+	powerup.duration 10
+	damagefactor "normal", 0.0
+	damagefactor "crush", 1.0
+	damagefactor "telefrag", 1.0
+//	damagefactor "LaserTrident", 1.0
+}
+
+actor StopHitShield : PowerProtection
+{
+	powerup.duration 10
+}
+
+
+actor NoAmmoSoundCooldown : Powerup
+{
+powerup.duration 12
+}
+
+actor BaseShieldWarper0
+{
+	Scale 2.5
+	Height 0
+	Radius 0
+	+NOINTERACTION
+	+CLIENTSIDEONLY
+	-SOLID
+	+NOGRAVITY
+	+MISSILE
+	+DONTBLAST
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 ACS_NamedExecuteAlways("core_shieldwarper", 0, 0)
+		TNT1 A 0 A_Jump(256, "Shield")
+		Goto Shield
+	Shield:
+		STAR AABBCCDD 1 A_Warp(AAPTR_TARGET, 0, 0, 16, 0, WARPF_INTERPOLATE|WARPF_NOCHECKPOSITION)
+		loop
+	}
+}
+
+#include "edit/ShieldWarpEdit.txt"

@@ -1,0 +1,31 @@
+actor VisualFunc2
+{
+Height 0
+Radius 0
++NOINTERACTION
++NOCLIP
+PROJECTILE
++CLIENTSIDEONLY
+}
+
+actor BaseVisual 
+{
+PROJECTILE
+speed 100
+Height 0
+Radius 0
++NOCLIP
++NOINTERACTION
++FORCEXYBILLBOARD
+scale 2.5
+RenderStyle "Translucent"
+Alpha 0.6
++CLIENTSIDEONLY
+states
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1
+stop
+}
+}

@@ -1,10 +1,8 @@
 //Vanilla Scripts
 
 //CBM Scripts
-
-const int C_CHECK_TARGET_OOC = 649;
-const int C_CHECK_TRACER_OOC = 650;
-const int C_CHECK_MASTER_OOC = 651;
+const int C_CHECK_TRACER_OOC = 650; //you do not need to use this script either
+const int C_CHECK_MASTER_OOC = 651; //make a named script for this
 
 const int DYE_CUTMAN = 10720;
 

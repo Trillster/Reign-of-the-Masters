@@ -1,0 +1,10 @@
+actor BaseShieldWarper : BaseShieldWarper0
+{
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_GiveInventory("ProjectileFXCode",1)
+goto "Super::Spawn"
+}
+}

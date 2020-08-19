@@ -1,0 +1,67 @@
+#library "VISC"
+#include "zcommon.acs"
+
+function bool InvisualCvar(void)
+{
+	return (InvisualCvarServer()&&InvisualCvarClient());
+}
+
+function bool InvisualCvarClient(void)
+{
+	return (getUserCvar(ConsolePlayerNumber(),"rotm_invisual")>0);
+}
+
+function bool InvisualCvarServer(void)
+{
+	return (getCvar("rotm_sv_invisual")>0);
+}
+
+Script "Invisual_Check" (void) CLIENTSIDE
+{
+SetResultValue(InvisualCvar());
+}
+
+function bool AllyHealthBarCvar(void)
+{
+	return (AllyHealthBarCvarServer()&&AllyHealthBarCvarClient());
+}
+
+function bool AllyHealthBarCvarClient(void)
+{
+	return (getUserCvar(ConsolePlayerNumber(),"rotm_allyhealthbar")>0);
+}
+
+function bool AllyHealthBarCvarServer(void)
+{
+	return (getCvar("rotm_sv_allyhealthbar")>0);
+}
+
+Script "AllyHealthBar_Check" (void) CLIENTSIDE
+{
+SetResultValue(AllyHealthBarCvar());
+}
+
+Script "GetTargetAlphaPercent" (void) CLIENTSIDE
+{
+SetActivatorToTarget(0);
+SetResultValue((100*GetActorProperty(0,APROP_Alpha))>>16);
+}
+
+Script "GetTargetHealth" (void) CLIENTSIDE
+{
+SetActivatorToTarget(0);
+SetResultValue(GetActorProperty(0,APROP_Health));
+}
+
+Script "GetTargetHealthPercent" (void) CLIENTSIDE
+{
+SetActivatorToTarget(0);
+SetResultValue(HealthPercent());
+}
+
+function int HealthPercent(void) {
+	int health = GetActorProperty(0,APROP_Health);
+	int maxHealth = GetActorProperty(0,APROP_SpawnHealth);
+	if(maxHealth==0) maxHealth = 100;
+	return (100*health/maxHealth);
+}

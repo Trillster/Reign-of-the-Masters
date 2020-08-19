@@ -1,0 +1,24 @@
+actor SakugarneWarperB_C : SakugarneWarperB replaces SakugarneWarperB { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+
+actor LeafShieldWarper_C : LeafShieldWarper replaces LeafShieldWarper { }
+actor StarCrashWarper_C : StarCrashWarper replaces StarCrashWarper { }
+actor PlantBarrierWarper_C : PlantBarrierWarper replaces PlantBarrierWarper { }
+actor JunkShieldWarper_C : JunkShieldWarper replaces JunkShieldWarper { }
+
+actor SkullBarrierWarper_C : SkullBarrierWarper replaces SkullBarrierWarper { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor ScorchWheelWarper_C : ScorchWheelWarper replaces ScorchWheelWarper { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor JewelSatelliteWarper_C : JewelSatelliteWarper replaces JewelSatelliteWarper { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor JewelSatelliteWarper2_C : JewelSatelliteWarper2 replaces JewelSatelliteWarper2 { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor JewelSatelliteWarper3_C : JewelSatelliteWarper3 replaces JewelSatelliteWarper3 { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor JewelSatelliteWarper4_C : JewelSatelliteWarper4 replaces JewelSatelliteWarper4 { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+
+actor AdaptorWings_C : AdaptorWings replaces AdaptorWings
+{
+States
+{
+Shield:
+SAPT F 0 ACS_NamedExecuteWithResult("Copy_Taget_Translation_Always",0)
+SAPT F 1 A_Warp(AAPTR_TARGET, -12, 0, 18, 0, WARPF_COPYINTERPOLATION|WARPF_NOCHECKPOSITION)
+loop
+}
+}

@@ -1,13 +1,21 @@
 #library "ROTM_SCRIPTS"
 #include "zcommon.acs"
+#include "8bdmlib.acs"
 
 #define TEAM_NONE -1
 
 #DEFINE MAX_PLAYERS 63 //0-31//0-63
 
-#DEFINE C_CHECK_TARGET_OOC 649
-#DEFINE C_CHECK_TRACER_OOC 650
+#DEFINE C_CHECK_TRACER_OOC 650 //see notes in other file
 #DEFINE C_CHECK_MASTER_OOC 651
+
+script "ROTM_Knockback" (int force)
+{
+int pusher = ACS_NamedExecuteWithResult("core_gettarget");
+if(pusher==0){terminate;}
+int vAng = VectorAngle(GetActorX(0) - GetActorX(pusher), GetActorY(0) - GetActorY(pusher)) >> 8;
+ThrustThing(vAng, force, 1, 0);
+}
 
 //TOOLS.ACS
 Script "ROTM_ReturnGamemode" (int checkmode)
@@ -51,18 +59,6 @@ Switch(CheckMode)
 	break;
 	}
 
-}
-
-//Imported from CBM BUGFIX.ACS
-script C_CHECK_TARGET_OOC (void)//This is for projectiles to check if their owner spectated, disconnected, or is dead.
-{
-	SetActivatorToTarget(0);
-	//log(s:"Player #? ",i:PlayerInGame(PlayerNumber()));
-	//log(s:"Is Dead? ",i:CheckInventory("IsDead"));
-	//log(s:"In Game? ",i:PlayerInGame(PlayerNumber()));
-	if(PlayerNumber() == -1 || CheckInventory("IsDead") || !PlayerInGame(PlayerNumber())){
-		SetResultValue(0);
-	}
 }
 
 script "ROTM_MainEnter" ENTER

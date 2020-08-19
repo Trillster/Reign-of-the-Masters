@@ -1,0 +1,45 @@
+actor GravityHoldFX_C : GravityHoldFX replaces GravityHoldFX { +MISSILE }
+actor GravityHoldFX2_C : GravityHoldFX2 replaces GravityHoldFX2 { +MISSILE }
+actor GravityHoldFX3_C : GravityHoldFX3 replaces GravityHoldFX3 { +MISSILE }
+
+actor LightningBoltFX_C : LightningBoltFXT replaces LightningBoltFX { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor LightningStartFX1_C : LightningStartFX1T replaces LightningStartFX1 { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor LightningStartFX2_C : LightningStartFX2T replaces LightningStartFX2 { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+
+actor RainSprinkle_C : RainSprinkle replaces RainSprinkle { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor FlashBombFX1_C : FlashBombFX1 replaces FlashBombFX1 { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor FlashBombFX2_C : FlashBombFX2 replaces FlashBombFX2 { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor IceWaveBreak_C : IceWaveBreak replaces IceWaveBreak { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor ThunderClawFX_C : ThunderClawFX replaces ThunderClawFX { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor LightningExtend_C : LightningExtend replaces LightningExtend { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+
+actor FistFX_C : FistFX replaces FistFX { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor LaserTrail_C : LaserTrail replaces LaserTrail { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor DuoPunchWireFX_C : DuoPunchWireFX replaces DuoPunchWireFX { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor GigaFistFX_C : GigaFistFX replaces GigaFistFX { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor GutrockFX_C : GutrockFX replaces GutrockFX { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor GeminiTrail_C : GeminiTrail replaces GeminiTrail { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor DrillExplode_C : DrillExplode replaces DrillExplode { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor GravityHoldParticle_C : GravityHoldParticle replaces GravityHoldParticle { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor CentaurFlashFX_C : CentaurFlashFX replaces CentaurFlashFX { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor FreezeFX_C : FreezeFX replaces FreezeFX { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor FreezeCrackerFX_C : FreezeCrackerFX replaces FreezeCrackerFX { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor JunkProjectileDeathFX_C : JunkProjectileDeathFX replaces JunkProjectileDeathFX { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor NoiseCrushTrail1_C : NoiseCrushTrail1 replaces NoiseCrushTrail1 { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor NoiseCrushTrail2_C : NoiseCrushTrail2 replaces NoiseCrushTrail2 { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor NoiseCrushTrail3_C : NoiseCrushTrail3 replaces NoiseCrushTrail3 { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor NoiseCrushTrail4_C : NoiseCrushTrail4 replaces NoiseCrushTrail4 { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor NoiseCrushTrail5_C : NoiseCrushTrail5 replaces NoiseCrushTrail5 { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor NoiseCrushTrail6_C : NoiseCrushTrail6 replaces NoiseCrushTrail6 { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor NoiseCrushTrail7_C : NoiseCrushTrail7 replaces NoiseCrushTrail7 { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor NoiseCrushTrail8_C : NoiseCrushTrail8 replaces NoiseCrushTrail8 { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor ScorchBit_C : ScorchBit replaces ScorchBit { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor ThunderTrail_C : ThunderTrail replaces ThunderTrail { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor WildCoilDeathFX_C : WildCoilDeathFX replaces WildCoilDeathFX { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor MegaBallFX1_C : MegaBallFX1 replaces MegaBallFX1 { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor MegaBallStartFX_C : MegaBallStartFX replaces MegaBallStartFX { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor HomingCrosshair_C : HomingCrosshair replaces HomingCrosshair { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor TornadoHoldEnd_C : TornadoHoldEnd replaces TornadoHoldEnd { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor LargeDrillShell_C : LargeDrillShell replaces LargeDrillShell { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor MediumDrillShell_C : MediumDrillShell replaces MediumDrillShell { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor JewelShotFX_C : JewelShotFX replaces JewelShotFX { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }

@@ -1,0 +1,41 @@
+#library "PROJPASS"
+#include "zcommon.acs"
+#include "8bdmlib.acs"
+
+Script "ROTM_TeamSpecies" ENTER 
+{
+int playernum = PlayerNumber();
+switch(GetPlayerInfo(PlayerNumber(), PLAYERINFO_TEAM))
+	{
+	Case 0:
+	SetActorProperty(0,APROP_SPECIES,"LightTeam");
+	break;
+	Case 1:
+	SetActorProperty(0,APROP_SPECIES,"WilyTeam");
+	break;
+	Case 2:
+	SetActorProperty(0,APROP_SPECIES,"CossackTeam");
+	break;
+	Case 3:
+	SetActorProperty(0,APROP_SPECIES,"KingTeam");
+	break;
+	Default:
+	SetActorProperty(0,APROP_SPECIES,StrParam(s:"Player",i:playernum));
+	break;
+	}
+if(GetCVar("cooperative")==1)
+	{
+	SetActorProperty(0,APROP_SPECIES,StrParam(s:"Cooperative"));
+	}
+}
+
+script "ROTM_TSR" RESPAWN
+{
+ACS_NamedExecuteAlways("ROTM_TeamSpecies",0);
+}
+
+Script "ROTM_SynchSpecies" (void)
+{
+int TargetTID = ACS_ExecuteWithResult(257,0);
+SetActorProperty(0,APROP_SPECIES,GetActorProperty(TargetTID,APROP_SPECIES));
+}

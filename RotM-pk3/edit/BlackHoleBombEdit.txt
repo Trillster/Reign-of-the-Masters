@@ -1,0 +1,159 @@
+actor BlackHoleBombWep : BlackHoleBombWep0 replaces BlackHoleBombWep0
+{
+States
+{
+Fire:
+BHUD A 0 A_JumpIfInventory("BlackHoleBombCooldown", 1, "NoAmmo")
+BHUD A 0 A_JumpIfInventory("BlackHoleFlag",1,"Switch")
+BHUD A 0 A_JumpIfNoAmmo("NoAmmo")
+BHUD A 1
+//BHUD A 0 A_SpawnItemEx("BlackHoleBomb", 0, 8, 32, cos(-pitch)*10, 0, sin(-pitch)*10, 0, SXF_TRANSFERTRANSLATION|SXF_TRANSFERPITCH)
+//BHUD A 0 A_TakeInventory("BlackHoleBombAmmo", 4)
+BHUD A 0 A_FireCustomMissile("BlackHoleBombB",0,1,8,0)
+BHUD A 0 A_GiveInventory("BlackHoleFlag",1)
+BHUD BC 3
+BHUD A 10
+goto BlackHoleWait
+}
+}
+
+actor BlackHoleBombB : BlackHoleBomb
+{
+States
+{
+Spawn:
+BLK0 B 0
+BLK0 B 0 A_PlaySoundEx("weapon/blackholebomb","Weapon",1)
+BLK0 BB 1 A_JumpIfInTargetInventory("BlackHoleFlag",2,"Switch")
+BLK0 B 0 ACS_ExecuteAlways(259, 0, 1)
+BLK0 B 0 A_ChangeVelocity(cos(-pitch)*15, 0, sin(-pitch)*15, CVF_RELATIVE|CVF_REPLACE)
+BLK0 BB 1 A_JumpIfInTargetInventory("BlackHoleFlag",2,"Switch")
+BLK0 B 0 ACS_ExecuteAlways(259, 0, 1)
+BLK0 B 0 A_ChangeVelocity(cos(-pitch)*15, 0, sin(-pitch)*15, CVF_RELATIVE|CVF_REPLACE)
+
+BLK0 CC 1 A_JumpIfInTargetInventory("BlackHoleFlag",2,"Switch")
+BLK0 B 0 A_ChangeVelocity(cos(-pitch)*10, 0, sin(-pitch)*15, CVF_RELATIVE|CVF_REPLACE)
+BLK0 CC 1 A_JumpIfInTargetInventory("BlackHoleFlag",2,"Switch")
+BLK0 B 0 A_ChangeVelocity(cos(-pitch)*15, 0, sin(-pitch)*15, CVF_RELATIVE|CVF_REPLACE)
+
+BLK0 DD 1 A_JumpIfInTargetInventory("BlackHoleFlag",2,"Switch")
+BLK0 B 0 ACS_ExecuteAlways(259, 0, 1)
+BLK0 B 0 A_ChangeVelocity(cos(-pitch)*15, 0, sin(-pitch)*15, CVF_RELATIVE|CVF_REPLACE)
+BLK0 DD 1 A_JumpIfInTargetInventory("BlackHoleFlag",2,"Switch")
+BLK0 B 0 ACS_ExecuteAlways(259, 0, 1)
+BLK0 B 0 A_ChangeVelocity(cos(-pitch)*15, 0, sin(-pitch)*15, CVF_RELATIVE|CVF_REPLACE)
+
+BLK0 EE 1 A_JumpIfInTargetInventory("BlackHoleFlag",2,"Switch")
+BLK0 B 0 A_ChangeVelocity(cos(-pitch)*15, 0, sin(-pitch)*15, CVF_RELATIVE|CVF_REPLACE)
+BLK0 EE 1 A_JumpIfInTargetInventory("BlackHoleFlag",2,"Switch")
+BLK0 B 0 A_ChangeVelocity(cos(-pitch)*15, 0, sin(-pitch)*15, CVF_RELATIVE|CVF_REPLACE)
+loop
+Switch:
+BLK0 B 0 A_StopSound
+BLK0 B 1 A_JumpIfInTargetInventory("BlackHoleFlag",3,"Death")
+BLK0 B 0 A_SpawnItemEx("BlackHoleBombExplosionB",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION|SXF_NOCHECKPOSITION)
+stop
+Death:
+BLK0 B 1 
+BLK0 B 0 A_TakeFromTarget("BlackHoleFlag",999)
+BLK0 B 0 A_StopSound
+Dying:
+BLK0 B 0 A_SetScale(scalex, scaley - 0.15)
+BLK0 B 1 A_FadeOut(0.1) 
+BLK0 B 0 A_SetScale(scalex, scaley - 0.15)
+BLK0 B 1 A_FadeOut(0.1) 
+BLK0 B 0 A_SetScale(scalex, scaley - 0.15)
+BLK0 C 1 A_FadeOut(0.1) 
+BLK0 B 0 A_SetScale(scalex, scaley - 0.15)
+BLK0 C 1 A_FadeOut(0.1) 
+BLK0 B 0 A_SetScale(scalex, scaley - 0.15)
+BLK0 D 1 A_FadeOut(0.1) 
+BLK0 B 0 A_SetScale(scalex, scaley - 0.15)
+BLK0 D 1 A_FadeOut(0.1) 
+BLK0 B 0 A_SetScale(scalex, scaley - 0.15)
+BLK0 E 1 A_FadeOut(0.1)
+BLK0 B 0 A_SetScale(scalex, scaley - 0.15)
+BLK0 E 1 A_FadeOut(0.1)
+loop 
+}
+}
+
+actor BlackHoleBombExplosionB : BlackHoleBombExplosion
+{
+States
+{
+Spawn:
+BLK0 F 0
+BLK0 F 0 A_GiveToTarget("BlackHoleBombCooldown", 1)
+BLK0 F 0 A_SpawnItemEx("BlackHoleBombFXSpawnerB", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION)
+BLK0 F 0 A_PlaySoundEx("weapon/blackholebombdetonate", "body", 1)
+BLK0 F 0 ACS_ExecuteAlways(247, 0, 7, 256)
+BLK0 F 0 A_Explode(5,128,0)
+BLK0 FFGG 1
+BLK0 F 0 ACS_ExecuteAlways(247, 0, 7, 256)
+BLK0 F 0 A_Explode(5,128,0)
+BLK0 HHII 1
+BLK0 F 0 ACS_ExecuteAlways(247, 0, 7, 256)
+BLK0 F 0 A_Explode(5,128,0)
+BLK0 JJKK 1
+BLK0 F 0 ACS_ExecuteAlways(247, 0, 7, 256)
+BLK0 F 0 A_Explode(5,128,0)
+BLK0 LLMM 1
+BLK0 F 0 ACS_ExecuteAlways(247, 0, 7, 256)
+BLK0 F 0 A_Explode(5,128,0)
+BLK0 NNOO 1
+BLK0 F 0 ACS_ExecuteAlways(247, 0, 7, 256)
+BLK0 F 0 A_Explode(5,128,0)
+BLK0 PPQQ 1
+BLK0 Q 0 A_Countdown
+goto Spawn+3
+}
+}
+
+actor BlackHoleBombFXSpawnerB : BlackHoleBombFXSpawner
+{
+States
+{
+	Spawn:
+		TNT1 A 0
+		TNT1 AA 0 A_SpawnItemEx("BlackHoleBombFXB", 256, 0, 0, 0, 0, 0, random(0, 359), SXF_TRANSFERTRANSLATION)
+		TNT1 A 1 A_SpawnItemEx("BlackHoleBombFXB", 256, 0, 0, 0, 0, 0, random(0, 359), SXF_TRANSFERTRANSLATION)
+		TNT1 AA 0 A_SpawnItemEx("BlackHoleBombFXB", 256, 0, 0, 0, 0, 0, random(0, 359), SXF_TRANSFERTRANSLATION)
+		TNT1 A 1 A_SpawnItemEx("BlackHoleBombFXB", 256, 0, 0, 0, 0, 0, random(0, 359), SXF_TRANSFERTRANSLATION)
+		TNT1 AA 0 A_SpawnItemEx("BlackHoleBombFXB", 256, 0, 0, 0, 0, 0, random(0, 359), SXF_TRANSFERTRANSLATION)
+		TNT1 A 1 A_SpawnItemEx("BlackHoleBombFXB", 256, 0, 0, 0, 0, 0, random(0, 359), SXF_TRANSFERTRANSLATION)
+		TNT1 AA 0 A_SpawnItemEx("BlackHoleBombFXB", 256, 0, 0, 0, 0, 0, random(0, 359), SXF_TRANSFERTRANSLATION)
+		TNT1 A 1 A_SpawnItemEx("BlackHoleBombFXB", 256, 0, 0, 0, 0, 0, random(0, 359), SXF_TRANSFERTRANSLATION)
+		TNT1 AA 0 A_SpawnItemEx("BlackHoleBombFXB", 256, 0, 0, 0, 0, 0, random(0, 359), SXF_TRANSFERTRANSLATION)
+		TNT1 A 1 A_SpawnItemEx("BlackHoleBombFXB", 256, 0, 0, 0, 0, 0, random(0, 359), SXF_TRANSFERTRANSLATION)
+		TNT1 AA 0 A_SpawnItemEx("BlackHoleBombFXB", 256, 0, 0, 0, 0, 0, random(0, 359), SXF_TRANSFERTRANSLATION)
+		TNT1 A 1 A_SpawnItemEx("BlackHoleBombFXB", 256, 0, 0, 0, 0, 0, random(0, 359), SXF_TRANSFERTRANSLATION)
+		TNT1 A 0 A_Countdown
+		loop
+	Death:
+		TNT1 A 0
+		stop
+}
+}
+
+actor BlackHoleBombFXB : BlackHoleBombFX
+{
+States
+{
+Spawn:
+BLK0 TS 3
+BLK0 S 0 A_ChangeVelocity(-16, 0, 0, CVF_RELATIVE|CVF_REPLACE)
+BLK0 RRRRRRRRRRRR 1 A_SpawnItemEx("BlackHoleBombFX2B",0,0,0,momx/1.5,momy/1.5,0,0,SXF_ABSOLUTEMOMENTUM|SXF_TRANSFERTRANSLATION)
+stop
+}
+}
+
+actor BlackHoleBombFX2B : BlackHoleBombFX2
+{
+States
+{
+Spawn:
+BLK0 R 5
+stop
+}
+}

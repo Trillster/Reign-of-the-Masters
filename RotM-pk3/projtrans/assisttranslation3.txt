@@ -1,0 +1,9 @@
+actor EddieBombTrail_C : EddieBombTrail replaces EddieBombTrail  { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+
+actor RushJetWarper_C : RushJetWarperF replaces RushJetWarper { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor RushMarineWarper_C : RushMarineWarperF replaces RushMarineWarper { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+
+actor RushDeath_C : RushDeath replaces RushDeath  { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor ReggaeDeath_C : ReggaeDeath replaces ReggaeDeath  { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor TangoDeath_C : TangoDeath replaces TangoDeath  { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }
+actor TrebleDeath_C : TrebleDeath replaces TrebleDeath  { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileFXCode",1) goto "Super::Spawn" } }

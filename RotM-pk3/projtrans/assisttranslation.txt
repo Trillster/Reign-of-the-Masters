@@ -1,0 +1,27 @@
+actor Rush_C : RushT replaces Rush { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileCode",1) goto "Super::Spawn" } }
+actor Rush2_C : Rush2T replaces Rush2 { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileCode",1) goto "Super::Spawn" } }
+
+actor EddieBomberEddie_C : EddieBomberEddie replaces EddieBomberEddie { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileCodeSyncTarget",1) goto "Super::Spawn" } }
+actor Eddie_C : EddieF replaces Eddie { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileCodeSyncTarget",1) goto "Super::Spawn" } }
+actor Rush3_C : Rush3 replaces Rush3 { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileCodeSyncTarget",1) goto "Super::Spawn" } }
+actor Reggae_C : ReggaeF replaces Reggae { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileCodeSyncTarget",1) goto "Super::Spawn" } }
+actor Tango_C : TangoF replaces Tango { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileCodeSyncTarget",1) goto "Super::Spawn" } }
+actor TangoAttack_C : TangoAttackF replaces TangoAttack { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileCodeSyncTarget",1) goto "Super::Spawn" } }
+actor Treble_C : TrebleF replaces Treble { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileCodeSyncTarget",1) goto "Super::Spawn" } }
+
+actor EddieBomberBomb_C : EddieBomberBomb replaces EddieBomberBomb  { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileCodeSyncTarget",1) goto "Super::Spawn" } }
+
+actor BeatSupportWarper_C : BeatSupportWarper replaces BeatSupportWarper { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileCode",1) goto "Super::Spawn" } }
+actor BeatSupportReturn_C : BeatSupportReturnF replaces BeatSupportReturn { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileCode",1) goto "Super::Spawn" } }
+actor TrebleShot_C : TrebleShot replaces TrebleShot { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileCode",1) goto "Super::Spawn" } }
+actor Item1Platform_C : Item1Platform replaces Item1Platform { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileCode",1) goto "Super::Spawn" } }
+actor Item2Platform_C : Item2Platform replaces Item2Platform { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileCode",1) goto "Super::Spawn" } }
+
+actor RushTeleport_C : RushTeleport replaces RushTeleport { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileCode",1) goto "Super::Spawn" } }
+actor Rush2Teleport_C : Rush2Teleport replaces Rush2Teleport { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileCode",1) goto "Super::Spawn" } }
+actor TangoTeleport_C : TangoTeleport replaces TangoTeleport { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileCode",1) goto "Super::Spawn" } }
+actor TrebleTeleport_C : TrebleTeleport replaces TrebleTeleport { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileCode",1) goto "Super::Spawn" } }
+actor EddieBomberTeleport_C : EddieBomberTeleport replaces EddieBomberTeleport { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileCode",1) goto "Super::Spawn" } }
+actor EddieTeleport_C : EddieTeleport replaces EddieTeleport { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileCode",1) goto "Super::Spawn" } }
+actor ReggaeTeleport_C : ReggaeTeleport replaces ReggaeTeleport { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileCode",1) goto "Super::Spawn" } }
+actor Rush3Teleport_C : Rush3Teleport replaces Rush3Teleport { states { Spawn: TNT1 AA 0 A_GiveInventory("ProjectileCode",1) goto "Super::Spawn" } }
