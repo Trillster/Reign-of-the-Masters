@@ -227,7 +227,7 @@ damage (2)//0
 Radius 8
 Height 8
 scale 2.5
-speed 33//22
+speed 80//22
 States
 {
 Spawn:
