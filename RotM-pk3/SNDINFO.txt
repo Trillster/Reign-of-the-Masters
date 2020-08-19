@@ -1,0 +1,6 @@
+
+//MM1
+weapon/CutMelee CUTSLICE
+weapon/FastCutter CUTFAST $limit weapon/FastCutter 0
+$limit weapon/rollingcutter 0
+weapon/CutterCatch BOOMERNG

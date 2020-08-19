@@ -1,0 +1,26 @@
+actor Quickman : ClassBase
+{
+player.displayname "quickman"
+player.startitem "MegaBuster"
+player.startitem "BusterAmmo", 3
+player.startitem "mm8bdmplayer", 1
+player.startitem "QuickBoomerangWep"
+player.forwardmove 1.35, 1.35
+player.sidemove 1.33, 1.33
+player.jumpz 11
+states
+{
+Spawn:
+QUIM A 0
+QUIM B 1
+QUIM A 1
+Goto Spawn+2
+See:
+QUIM BCDE 5
+Goto Spawn
+Missile:
+QUIM F 5
+QUIM G 4
+goto Spawn
+}
+}

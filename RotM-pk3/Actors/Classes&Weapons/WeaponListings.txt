@@ -1,0 +1,3 @@
+
+#include "Actors/Classes&Weapons/Cutman.txt"
+#include "Actors/Classes&Weapons/Quickman.txt"

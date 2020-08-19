@@ -1,0 +1,11 @@
+//Vanilla Scripts
+
+//CBM Scripts
+
+const int C_CHECK_TARGET_OOC = 649;
+const int C_CHECK_TRACER_OOC = 650;
+const int C_CHECK_MASTER_OOC = 651;
+
+const int DYE_CUTMAN = 10720;
+
+const int DYE_QUICKMAN = 10743;

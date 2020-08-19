@@ -1,0 +1,83 @@
+actor ClassBase0 : PlayerPawn
+{
+player.displayname "megaman"
+player.soundclass "megaman"
+player.damagescreencolor "yellow"
+player.forwardmove 0.8, 0.8
+player.sidemove 0.78, 0.78
+player.jumpz 10
+player.colorrange 0 0
+player.startitem "MegaBuster"
+player.startitem "BusterAmmo", 3
+player.startitem "mm8bdmplayer", 1
+mass 9999
+gravity 0.8
++NODAMAGETHRUST
++DONTBLAST
++NOBLOOD
++QUICKTORETALIATE
++NOSKIN
+damagefactor "Dummy", 0.0
+Player.MaxSkinSizeFactor 0, 0
+scale 2.5
+bloodtype "MegamanBlood"
+
+States
+{
+SuperSpawn:
+"----" A 1 A_Jump(256,"Spawn")
+wait
+SuperClassPain:
+"----" A 1 A_Jump(256,"ClassPain")
+wait
+SuperClassDeath:
+"----" A 1 A_Jump(256,"ClassDeath")
+wait
+
+MegamanPain:
+"----" A 0 A_Pain
+"----" A 1 A_SpawnItemEx("PainFX",-5,0,3,0,0,0)
+"----" A 1 A_Recoil(1)
+"----" AAAAAAAAA 2 A_SpawnItemEx("PainFX",-5,0,3,0,0,0)
+"----" A 1
+goto SuperSpawn
+
+MegamanDeath:
+"----" A 20
+MegamanExplode:
+TNT1 A 0 A_SpawnItemEx("FakeDeathFX", 0, 0, 32)
+MegamanFall:
+TNT1 A 0 A_PlayerScream
+MegamanErase:
+TNT1 A 1 A_CheckPlayerDone
+wait
+
+// SINGLEPLAYER STUFF
+TheEnd: // Used in the original ending
+"####" G 4
+loop
+WalkForward: 
+"####" BBBBBCCCCCDDDDDEEEEE 1 A_Recoil(-0.8)
+loop
+CreditWalk: 
+"####" BCDE 8
+loop
+CreditRun:
+"####" BCDE 5
+loop
+DozerCarry:
+"####" BBBBCCCCDDDDEEEEBBBBCCCCDDDDBBBBCCCCDDDD 1 A_Recoil(-1)
+"####" F 10 A_Stop
+"####" F -1
+stop
+DozerThrow:
+"####" F 0 A_ChangeFlag("THRUACTORS",1)
+"####" F 20 ThrustThingZ(0, 60, 0, 1)
+"####" G 20
+"####" A -1
+stop
+EndlessPain:
+"####" H -1
+stop
+}
+}

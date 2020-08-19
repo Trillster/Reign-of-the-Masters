@@ -1,0 +1,7 @@
+#include "Actors/ClassBases/classbase0.txt"
+#include "Actors/ClassBases/classbase1.txt"
+#include "Actors/ClassBases/classbase2.txt"
+#include "Actors/ClassBases/classbase.txt"
+
+#include "Actors/ClassBases/classbase-flags.txt"
+#include "Actors/ClassBases/ClassHealthBase.txt"

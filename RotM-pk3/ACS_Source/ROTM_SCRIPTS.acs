@@ -1,0 +1,193 @@
+#library "ROTM_SCRIPTS"
+#include "zcommon.acs"
+
+#define TEAM_NONE -1
+
+#DEFINE MAX_PLAYERS 63 //0-31//0-63
+
+#DEFINE C_CHECK_TARGET_OOC 649
+#DEFINE C_CHECK_TRACER_OOC 650
+#DEFINE C_CHECK_MASTER_OOC 651
+
+//TOOLS.ACS
+Script "ROTM_ReturnGamemode" (int checkmode)
+{
+Switch(CheckMode)
+	{
+	Case 0:
+	if(GetCvar("deathmatch")==1){SetResultValue(0);}
+	if(GetCvar("possession")==1){SetResultValue(1);}
+	if(GetCvar("teampossession")==1){SetResultValue(1);}
+	if(GetCvar("lastmanstanding")==1){SetResultValue(2);}
+	if(GetCvar("teamlms")==1){SetResultValue(2);}
+	if(GetCvar("duel")==1){SetResultValue(3);}
+	if(GetCvar("ctf")==1){SetResultValue(4);}
+	if(GetCvar("oneflagctf")==1){SetResultValue(4);}
+	if(GetCvar("teamgame")==1){SetResultValue(4);}
+	if(GetCvar("terminator")==1){SetResultValue(5);}
+	break;
+	
+	Case 1:
+	if(GetCvar("cooperative")==1){SetResultValue(1);}
+	if(GetCvar("survival")==1){SetResultValue(1);}
+	if(GetCvar("deathmatch")==1){SetResultValue(0);}
+	if(GetCvar("possession")==1){SetResultValue(0);}
+	if(GetCvar("teampossession")==1){SetResultValue(1);}
+	if(GetCvar("lastmanstanding")==1){SetResultValue(0);}
+	if(GetCvar("teamlms")==1){SetResultValue(1);}
+	if(GetCvar("duel")==1){SetResultValue(0);}
+	if(GetCvar("ctf")==1){SetResultValue(1);}
+	if(GetCvar("oneflagctf")==1){SetResultValue(1);}
+	if(GetCvar("teamgame")==1){SetResultValue(1);}
+	if(GetCvar("teamplay")==1){SetResultValue(1);}
+	if(GetCvar("terminator")==1){SetResultValue(0);}
+	break;
+	
+	Case 2:
+	int ReturnThis = 0;
+	if(GetCvar("instagib")==1){ReturnThis=1;}
+	if(GetCvar("buckshot")==1){ReturnThis=2;}
+	SetResultValue(ReturnThis);
+	break;
+	}
+
+}
+
+//Imported from CBM BUGFIX.ACS
+script C_CHECK_TARGET_OOC (void)//This is for projectiles to check if their owner spectated, disconnected, or is dead.
+{
+	SetActivatorToTarget(0);
+	//log(s:"Player #? ",i:PlayerInGame(PlayerNumber()));
+	//log(s:"Is Dead? ",i:CheckInventory("IsDead"));
+	//log(s:"In Game? ",i:PlayerInGame(PlayerNumber()));
+	if(PlayerNumber() == -1 || CheckInventory("IsDead") || !PlayerInGame(PlayerNumber())){
+		SetResultValue(0);
+	}
+}
+
+script "ROTM_MainEnter" ENTER
+{
+	GiveInventory("IsInGame",1);
+	//GiveInventory("PowerNoGravityFix",1);//Ask Celebi why this is given
+	//GiveInventory("SpawnTelefragFixPickup",1);
+	//GiveInventory("StaminaFlag",500);
+}
+
+script "ROTM_MainRespawn" RESPAWN
+{
+ACS_NamedExecuteAlways("ROTM_MainEnter",0);
+}
+
+// [Mike] Player Translations
+int ROTMPlayerTranslation[64];
+BOOL ROTMIsTeamGame = 0; // Is mode a team game?
+
+Script "ROTM_ApplyColor" (int weap, int nosound) //$CBM
+{
+	ROTMIsTeamGame = ACS_NamedExecuteWithResult("ROTM_ReturnGamemode", 1);
+	
+	if(nosound==0){LocalAmbientSound("menu/cursor",127);} //Play weapon switch noise
+
+	if(CheckInventory("NoWeaponTranslation")>0){
+	terminate;
+	}
+
+	If(ROTMIsTeamGame==1 && nosound<=9 && CheckInventory("NoTeamTranslation")==0)
+		{//If team game, set team colors and don't use weapon translations
+		Switch(PlayerTeam())
+			{
+			Case 0:
+			Switch(nosound)
+				{
+				default:
+				weap = 10600;//Team color
+				break;
+				Case 3:
+				weap = 10603;//Darkened color
+				break;
+				Case 5:
+				weap = 10605;//Team charge 1
+				break;
+				Case 6:
+				weap = 10606;//Team charge 2
+				break;
+				Case 7:
+				weap = 10607;//Team charge 3
+				break;
+				}
+			break;
+			Case 1:
+			Switch(nosound)
+				{
+				default:
+				weap = 10610;
+				break;
+				Case 3:
+				weap = 10613;
+				break;
+				Case 5:
+				weap = 10615;
+				break;
+				Case 6:
+				weap = 10616;
+				break;
+				Case 7:
+				weap = 10617;
+				break;
+				}
+			break;
+			Case 2:
+			Switch(nosound)
+				{
+				default:
+				weap = 10620;
+				break;
+				Case 3:
+				weap = 10623;
+				break;
+				Case 5:
+				weap = 10625;
+				break;
+				Case 6:
+				weap = 10626;
+				break;
+				Case 7:
+				weap = 10627;
+				break;
+				}
+			break;
+			Case 3:
+			Switch(nosound)
+				{
+				default:
+				weap = 10630;
+				break;
+				Case 3:
+				weap = 10633;
+				break;
+				Case 5:
+				weap = 10635;
+				break;
+				Case 6:
+				weap = 10636;
+				break;
+				Case 7:
+				weap = 10637;
+				break;
+				}
+			break;
+			}
+		}
+
+	else if(nosound<=1) {
+		if(CheckInventory("DocBusterC")) {
+			weap = 10768;
+			//ACS_ExecuteAlways(648,0,9);
+		}
+		else if(CheckInventory("EvilFistC")) {
+			weap = 10869;
+		}
+	}
+	Thing_SetTranslation(0, weap);
+	ROTMPlayerTranslation[PlayerNumber()] = weap;
+}

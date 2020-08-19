@@ -1,0 +1,11 @@
+actor ClassBase2 : ClassBase1
+{
+States
+{
+//ey thx jax
+
+Pain.ClassPainNormal:
+"----" A 0
+Goto Pain+1
+}
+}
