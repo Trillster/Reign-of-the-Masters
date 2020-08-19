@@ -1,6 +1,6 @@
 Repository designed for the Reign of the Masters MM8BDM project.
 
-Project is organized as a pk3 structured into a folder directory.
+Project is organized as a pk3 structured into a folder directory, RotM-pk3
 
 Use the cmdhere.bat to open a command prompt for usage of the dam.jar.
 
