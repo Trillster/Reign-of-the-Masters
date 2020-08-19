@@ -1,0 +1,43 @@
+//special cases, due to being non-clientside spawned with a_spawnitemex and spawning a clientside fx
+//or something like that
+
+actor TrailProjectileCheck : CustomInventory
+{
+states
+{
+Pickup:
+TNT1 A 0 A_JumpIf(CheckClass("RainFlush", AAPTR_DEFAULT, true),"Pickup2")
+TNT1 A 0 A_JumpIf(CheckClass("JunkCounterProjectile", AAPTR_DEFAULT, true),"Pickup2")
+TNT1 A 0 A_JumpIf(CheckClass("FlashBombExplosion", AAPTR_DEFAULT, true),"Pickup2")
+TNT1 A 0 A_JumpIf(CheckClass("HomingSniperLockon", AAPTR_DEFAULT, true),"Pickup2")
+TNT1 A 0 A_JumpIf(CheckClass("IceWaveIcicleWall", AAPTR_DEFAULT, true),"Pickup2")
+TNT1 A 0 A_JumpIf(CheckClass("IceWaveIcicleFloor", AAPTR_DEFAULT, true),"Pickup2")
+TNT1 A 0 A_JumpIf(CheckClass("LightningBolt", AAPTR_DEFAULT, true),"Pickup2")
+TNT1 A 0 A_JumpIf(CheckClass("ThunderClawReturn2", AAPTR_DEFAULT, true),"Pickup2")
+stop
+Pickup2:
+TNT1 A 0 A_GiveInventory("SyncTarget",1)
+stop
+}
+}
+
+actor HomingSniperLockonT : HomingSniperLockon
+{
++THRUACTORS
+States
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_ChangeFlag("THRUACTORS",0)
+goto "Super::Spawn"
+}
+}
+
+Actor LightningBoltFXT : LightningBoltFX
+{
+-NONETID
++CLIENTSIDEONLY
+}
+
+actor LightningStartFX1T : LightningStartFX1 { -NONETID }
+actor LightningStartFX2T : LightningStartFX2 { -NONETID }

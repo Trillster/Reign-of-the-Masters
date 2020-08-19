@@ -1,0 +1,120 @@
+//stuff that calls a function on its first spawn frame
+
+//Aesthetic, so I don't care
+//BeatSupportProjectile
+
+actor EddieF : Eddie
+{
+states
+{
+Spawn:
+RUSH D 0 //A_Jump(256,"Death")
+goto "Super::Spawn+1"
+}
+}
+
+actor RushF : Rush
+{
+states
+{
+Spawn:
+RUSH D 0 //A_Jump(256,"Death")
+goto "Super::Spawn+1"
+}
+}
+
+actor Rush2F : Rush2
+{
+states
+{
+Spawn:
+RUSH D 0 //A_Jump(256,"Death")
+goto "Super::Spawn+1"
+}
+}
+
+actor RushJetWarperF : RushJetWarper
+{
+States
+{
+Spawn:
+RUSH G 1 //A_Warp(AAPTR_TARGET, 0,0,0,0,WARPF_NOCHECKPOSITION|WARPF_INTERPOLATE)
+goto Spawn2+1
+Spawn2:
+RUSH GGGGHHHH 1 A_Warp(AAPTR_TARGET, 0,0,0,0,WARPF_NOCHECKPOSITION|WARPF_INTERPOLATE)
+RUSH H 1 A_JumpIFInTargetInventory("RushJetCounter", 1, "Spawn2")
+RUSH H 0 A_SpawnItemEx("RushDeath")
+stop
+}
+}
+
+actor RushMarineWarperF : RushMarineWarper
+{
+States
+{
+Spawn:
+RUSH M 1 //A_JumpIFInTargetInventory("IsUnderwater", 1, "Marine")
+goto Spawn2+1
+Spawn2:
+RUSH M 1 A_JumpIFInTargetInventory("IsUnderwater", 1, "Marine")
+NotUnderwater:
+TNT1 A 1 A_JumpIFInTargetInventory("IsUnderwater", 1, "Marine")
+TNT1 A 1 A_JumpIFInTargetInventory("RushMarineCounter", 1, "NotUnderwater")
+stop
+Marine:
+RUSH LLLMMM 1 A_Warp(AAPTR_TARGET, 0,0,0,0,WARPF_NOCHECKPOSITION|WARPF_INTERPOLATE)
+RUSH M 1 A_JumpIFInTargetInventory("RushMarineCounter", 1, "Spawn2")
+RUSH M 0 A_SpawnItemEx("RushDeath")
+stop
+}
+}
+
+actor BeatSupportReturnF : BeatSupportReturn
+{
+States
+{
+Spawn:
+BEAT A 1 //A_JumpIfCloser(64,"Returned")
+goto "Super::Spawn+1"
+}
+}
+
+actor ReggaeF : Reggae
+{
+States
+{
+Spawn:
+TNT1 A 0 //A_Jump(256,"Death")
+goto "Super::Spawn+1"
+}
+}
+
+actor TangoF : Tango
+{
+States
+{
+Spawn:
+TANG H 0 //A_Jump(256,"Death")
+goto "Super::Spawn+1"
+}
+}
+
+actor TangoAttackF : TangoAttack
+{
+States
+{
+Spawn:
+TANG E 0 //A_CountDown
+goto "Super::Spawn+1"
+}
+}
+
+actor TrebleF : Treble
+{
+States
+{
+Spawn:
+TRBL F 0 //A_Jump(256, "Death")
+goto "Super::Spawn+1"
+}
+}

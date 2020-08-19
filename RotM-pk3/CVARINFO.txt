@@ -1,0 +1,8 @@
+server bool rotm_sv_teamvisual = true;
+user bool rotm_teamvisual = true;
+server bool rotm_sv_invisual = true;
+user bool rotm_invisual = true;
+server bool rotm_sv_allyhealthbar = true;
+user bool rotm_allyhealthbar = true;
+server bool rotm_sv_enemyhealthbar = false;
+user bool rotm_enemyhealthbar = true;

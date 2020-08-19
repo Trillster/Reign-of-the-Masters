@@ -1,0 +1,22 @@
+actor WireAdaptorHookB : WireAdaptorHook replaces WireAdaptorHook
+{
+states
+{
+Spawn:
+WADP B 0
+WADP B 0 A_SetUserVar("user_CountDown",reactiontime)
+WADP B 0 A_SetUserVar(user_PTID, ACS_NamedExecuteWithResult("core_gettarget"))
+WADP B 0 A_GiveInventory("WeaponCharge",1)
+WADP B 0 A_ScaleVelocity(44)//Speed of projectile.
+goto Spawn2
+
+Spawn2:
+WADP B 0 ACS_NamedExecuteAlways("core_drawhookshot2", 0, user_PTID, 18)
+goto "Super::Spawn2+1"
+}
+}
+
+actor WireAdaptorHookLongB : WireAdaptorHookB replaces WireAdaptorHookLong
+{
+reactiontime 3
+}

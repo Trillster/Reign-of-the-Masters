@@ -1,0 +1,30 @@
+actor RushT : RushF
+{
+states
+{
+Melee:
+RUSH C 1 A_JumpIfInTargetInventory("StrongSpring",1,"Melee2")
+RUSH C 18 A_GiveToTarget("SpringActivate",1)
+RUSH C 0 A_Die
+Goto Death
+Melee2:
+RUSH C 18 A_GiveToTarget("SpringActivate2",1)
+RUSH C 0 A_Die
+Goto Death
+Death:
+RUSH F 0 A_SpawnItemEx("RushDeathT",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+stop
+}
+}
+
+actor Rush2T : Rush2F
+{
+states
+{
+Death:
+RUSH F 0 A_SpawnItemEx("RushDeathT",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION|SXF_TRANSFERTRANSLATION)
+stop
+}
+}
+
+actor RushDeathT : RushDeath {}

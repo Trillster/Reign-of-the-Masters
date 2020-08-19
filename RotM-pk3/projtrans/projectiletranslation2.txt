@@ -1,0 +1,153 @@
+actor BlackHoleBombB_D : BlackHoleBombB_C replaces BlackHoleBombB { states {
+Death: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::Death"
+} }
+/*
+actor JunkCounterProjectile_D : JunkCounterProjectile_C replaces JunkCounterProjectile { states {
+Death: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::Death"
+} }
+*/
+actor DustCrusher_D : DustCrusher_C replaces DustCrusher { states {
+Death: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::Death"
+XDeath: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::XDeath"
+} }
+
+actor CrashBomb_D : CrashBomb_C replaces CrashBomb { states {
+Death: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::Death"
+XDeath: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::XDeath"
+} }
+
+actor TornadoHoldPod_D : TornadoHoldPod_C replaces TornadoHoldPod { states {
+XDeath: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::XDeath"
+} }
+
+actor RemoteMine_D : RemoteMine_C replaces RemoteMine { states {
+Death: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::Death"
+XDeath: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::XDeath"
+Crash: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::Crash"
+} }
+
+///
+
+actor MidFist_D : MidFist_C replaces MidFist { states {
+Death: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::Death"
+} }
+
+actor GigaFist_D : GigaFist_C replaces GigaFist { states {
+Death: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::Death"
+} }
+
+actor HyperBomb_D : HyperBomb_C replaces HyperBomb { states {
+Death: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::Death"
+} }
+
+actor OilShot_D : OilShot_C replaces OilShot { states {
+Death: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::Death"
+} }
+
+actor AirShot_D : AirShot_C replaces AirShot { states {
+Death: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::Death"
+} }
+
+actor HardKnuckle_D : HardKnuckle_C replaces HardKnuckle { states {
+Death: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::Death"
+} }
+
+actor MagnetMissile_D : MagnetMissile_C replaces MagnetMissile { states {
+Death: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::Death"
+} }
+
+actor DiveMissile_D : DiveMissile_C replaces DiveMissile { states {
+Death: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::Death"
+} }
+
+actor PharaohShot3_D : PharaohShot3_C replaces PharaohShot3 { states {
+Death: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::Death"
+} }
+
+actor CrystalEyeBit_D : CrystalEyeBit_C replaces CrystalEyeBit { states {
+Death: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::Death"
+} }
+
+actor NapalmBomb_D : NapalmBomb_C replaces NapalmBomb { states {
+Death: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::Death"
+} }
+
+actor DangerWrap_D : DangerWrap_C replaces DangerWrap { states {
+Death: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::Death"
+} }
+
+actor ThunderBolt_D : ThunderBolt_C replaces ThunderBolt { states {
+Death: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::Death"
+} }
+
+actor AstroCrush_D : AstroCrush_C replaces AstroCrush { states {
+Death: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::Death"
+} }
+
+actor HomingSniper_D : HomingSniper_C replaces HomingSniper { states {
+Death: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::Death"
+} }
+
+actor IceWaveIcicleWall_D : IceWaveIcicleWall_C replaces IceWaveIcicleWall { states {
+Death: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::Death"
+} }
+
+actor IceWaveIcicleFloor_D : IceWaveIcicleFloor_C replaces IceWaveIcicleFloor { states {
+Death: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::Death"
+} }
+
+actor MegaBall_D : MegaBall_C replaces MegaBall { states {
+Death: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::Death"
+} }
+
+actor MegaBallDropped_D : MegaBallDropped_C replaces MegaBallDropped { states {
+Death: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::Death"
+} }
+
+actor MegaBallKicked_D : MegaBallKicked_C replaces MegaBallKicked { states {
+Death: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::Death"
+} }
+
+actor HoldingTornado_D : HoldingTornado_C replaces HoldingTornado { states {
+Death: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::Death"
+} }
+
+actor WaterBalloon_D : WaterBalloon_C replaces WaterBalloon { states {
+Death: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::Death"
+} }
+
+actor IceWallSpawner_D : IceWallSpawner_C replaces IceWallSpawner { states {
+Death: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::Death"
+} }
+
+actor IceWall_D : IceWall_C replaces IceWall { states {
+Death: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::Death"
+} }
+
+actor ConcreteShot_D : ConcreteShot_C replaces ConcreteShot { states {
+Death: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::Death"
+} }
+
+actor ConcreteBlock_D : ConcreteBlock_C replaces ConcreteBlock { states {
+Death: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::Death"
+} }
+
+actor HornetChaser_D : HornetChaser_C replaces HornetChaser { states {
+Death: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::Death"
+} }
+
+actor SolarBlaze_D : SolarBlaze_C replaces SolarBlaze { states {
+Death: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::Death"
+} }
+
+actor BalladeCracker_D : BalladeCracker_C replaces BalladeCracker { states {
+Death: TNT1 A 0 A_GiveInventory("ProjectileDCode",1) goto "Super::Death"
+} }
+
+//
+
+actor GigaFistRip_D : GigaFist_D replaces GigaFist_Campaign
+{
++RIPPER
+Speed 30
+}

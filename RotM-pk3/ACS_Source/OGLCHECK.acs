@@ -1,0 +1,13 @@
+#library "OGLCheck"
+#include "zcommon.acs"
+
+function bool OpenGLCvarClient(void)
+{
+	return (getCvar("vid_renderer"));
+	//return (getUserCvar(ConsolePlayerNumber(),"vid_renderer"));
+}
+
+script "OpenGLCheck" (void) CLIENTSIDE
+{
+SetResultValue(OpenGLCvarClient());
+}

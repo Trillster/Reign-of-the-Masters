@@ -1,2 +1,10 @@
 ROTM_COLORS
 ROTM_SCRIPTS
+projtra1
+projtran
+hookedit
+oglcheck
+VIS
+VISC
+VISE
+projpass

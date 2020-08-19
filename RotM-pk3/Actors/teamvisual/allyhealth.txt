@@ -1,0 +1,263 @@
+actor AllyHealthBarFunc2 : VisualFunc2
+{
+states
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_JumpIf(CallACS("AllyHealthBar_Check")&&(CallACS("GetTargetHealth")>0),"Spawn2")
+TNT1 A 1
+stop
+Spawn2:
+TNT1 A 0 A_JumpIf(CallACS("GetTargetHealthPercent")<7, "Health1")
+TNT1 A 0 A_JumpIf(CallACS("GetTargetHealthPercent")<14, "Health2")
+TNT1 A 0 A_JumpIf(CallACS("GetTargetHealthPercent")<21, "Health3")
+TNT1 A 0 A_JumpIf(CallACS("GetTargetHealthPercent")<27, "Health4")
+TNT1 A 0 A_JumpIf(CallACS("GetTargetHealthPercent")<34, "Health5")
+TNT1 A 0 A_JumpIf(CallACS("GetTargetHealthPercent")<41, "Health6")
+TNT1 A 0 A_JumpIf(CallACS("GetTargetHealthPercent")<47, "Health7")
+TNT1 A 0 A_JumpIf(CallACS("GetTargetHealthPercent")<54, "Health8")
+TNT1 A 0 A_JumpIf(CallACS("GetTargetHealthPercent")<61, "Health9")
+TNT1 A 0 A_JumpIf(CallACS("GetTargetHealthPercent")<67, "Health10")
+TNT1 A 0 A_JumpIf(CallACS("GetTargetHealthPercent")<74, "Health11")
+TNT1 A 0 A_JumpIf(CallACS("GetTargetHealthPercent")<81, "Health12")
+TNT1 A 0 A_JumpIf(CallACS("GetTargetHealthPercent")<87, "Health13")
+TNT1 A 0 A_JumpIf(CallACS("GetTargetHealthPercent")<94, "Health14")
+goto Health15
+Health1:
+TNT1 A 0 A_GiveToTarget("SpawnHealthBar1")
+stop
+Health2:
+TNT1 A 0 A_GiveToTarget("SpawnHealthBar2")
+stop
+Health3:
+TNT1 A 0 A_GiveToTarget("SpawnHealthBar3")
+stop
+Health4:
+TNT1 A 0 A_GiveToTarget("SpawnHealthBar4")
+stop
+Health5:
+TNT1 A 0 A_GiveToTarget("SpawnHealthBar5")
+stop
+Health6:
+TNT1 A 0 A_GiveToTarget("SpawnHealthBar6")
+stop
+Health7:
+TNT1 A 0 A_GiveToTarget("SpawnHealthBar7")
+stop
+Health8:
+TNT1 A 0 A_GiveToTarget("SpawnHealthBar8")
+stop
+Health9:
+TNT1 A 0 A_GiveToTarget("SpawnHealthBar9")
+stop
+Health10:
+TNT1 A 0 A_GiveToTarget("SpawnHealthBar10")
+stop
+Health11:
+TNT1 A 0 A_GiveToTarget("SpawnHealthBar11")
+stop
+Health12:
+TNT1 A 0 A_GiveToTarget("SpawnHealthBar12")
+stop
+Health13:
+TNT1 A 0 A_GiveToTarget("SpawnHealthBar13")
+stop
+Health14:
+TNT1 A 0 A_GiveToTarget("SpawnHealthBar14")
+stop
+Health15:
+TNT1 A 0 A_GiveToTarget("SpawnHealthBar15")
+stop
+}
+}
+
+actor SpawnHealthBar1 : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_SpawnItemEx("HealthBar1", -momx, -momy, -momz+height*7/4, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM|SXF_ABSOLUTEPOSITION, 0)
+stop
+}
+}
+
+actor SpawnHealthBar2 : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_SpawnItemEx("HealthBar2", -momx, -momy, -momz+height*7/4, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM|SXF_ABSOLUTEPOSITION, 0)
+stop
+}
+}
+
+actor SpawnHealthBar3 : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_SpawnItemEx("HealthBar3", -momx, -momy, -momz+height*7/4, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM|SXF_ABSOLUTEPOSITION, 0)
+stop
+}
+}
+
+actor SpawnHealthBar4 : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_SpawnItemEx("HealthBar4", -momx, -momy, -momz+height*7/4, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM|SXF_ABSOLUTEPOSITION, 0)
+stop
+}
+}
+
+actor SpawnHealthBar5 : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_SpawnItemEx("HealthBar5", -momx, -momy, -momz+height*7/4, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM|SXF_ABSOLUTEPOSITION, 0)
+stop
+}
+}
+
+actor SpawnHealthBar6 : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_SpawnItemEx("HealthBar6", -momx, -momy, -momz+height*7/4, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM|SXF_ABSOLUTEPOSITION, 0)
+stop
+}
+}
+
+actor SpawnHealthBar7 : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_SpawnItemEx("HealthBar7", -momx, -momy, -momz+height*7/4, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM|SXF_ABSOLUTEPOSITION, 0)
+stop
+}
+}
+
+actor SpawnHealthBar8 : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_SpawnItemEx("HealthBar8", -momx, -momy, -momz+height*7/4, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM|SXF_ABSOLUTEPOSITION, 0)
+stop
+}
+}
+
+actor SpawnHealthBar9 : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_SpawnItemEx("HealthBar9", -momx, -momy, -momz+height*7/4, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM|SXF_ABSOLUTEPOSITION, 0)
+stop
+}
+}
+
+actor SpawnHealthBar10 : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_SpawnItemEx("HealthBar10", -momx, -momy, -momz+height*7/4, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM|SXF_ABSOLUTEPOSITION, 0)
+stop
+}
+}
+
+actor SpawnHealthBar11 : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_SpawnItemEx("HealthBar11", -momx, -momy, -momz+height*7/4, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM|SXF_ABSOLUTEPOSITION, 0)
+stop
+}
+}
+
+actor SpawnHealthBar12 : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_SpawnItemEx("HealthBar12", -momx, -momy, -momz+height*7/4, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM|SXF_ABSOLUTEPOSITION, 0)
+stop
+}
+}
+
+actor SpawnHealthBar13 : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_SpawnItemEx("HealthBar13", -momx, -momy, -momz+height*7/4, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM|SXF_ABSOLUTEPOSITION, 0)
+stop
+}
+}
+
+actor SpawnHealthBar14 : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_SpawnItemEx("HealthBar14", -momx, -momy, -momz+height*7/4, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM|SXF_ABSOLUTEPOSITION, 0)
+stop
+}
+}
+
+actor SpawnHealthBar15 : CustomInventory
+{
+States
+{
+Pickup:
+TNT1 A 0 A_SpawnItemEx("HealthBar15", -momx, -momy, -momz+height*7/4, momx, momy, momz, 0, SXF_ABSOLUTEMOMENTUM|SXF_ABSOLUTEPOSITION, 0)
+stop
+}
+}
+
+actor HealthBar1 : BaseVisual
+{
+States
+{
+Spawn:
+EPCE P 0
+Spawn2:
+"----" A 1
+stop
+}
+}
+
+actor HealthBar2 : HealthBar1 { states { Spawn: EPCE O 0
+goto Spawn2 }}
+actor HealthBar3 : HealthBar1 { states { Spawn: EPCE N 0
+goto Spawn2 }}
+actor HealthBar4 : HealthBar1 { states { Spawn: EPCE M 0
+goto Spawn2 }}
+actor HealthBar5 : HealthBar1 { states { Spawn: EPCE L 0
+goto Spawn2 }}
+actor HealthBar6 : HealthBar1 { states { Spawn: EPCE K 0
+goto Spawn2 }}
+actor HealthBar7 : HealthBar1 { states { Spawn: EPCE J 0
+goto Spawn2 }}
+actor HealthBar8 : HealthBar1 { states { Spawn: EPCE I 0
+goto Spawn2 }}
+actor HealthBar9 : HealthBar1 { states { Spawn: EPCE H 0
+goto Spawn2 }}
+actor HealthBar10 : HealthBar1 { states { Spawn: EPCE G 0
+goto Spawn2 }}
+actor HealthBar11 : HealthBar1 { states { Spawn: EPCE F 0
+goto Spawn2 }}
+actor HealthBar12 : HealthBar1 { states { Spawn: EPCE E 0
+goto Spawn2 }}
+actor HealthBar13 : HealthBar1 { states { Spawn: EPCE D 0
+goto Spawn2 }}
+actor HealthBar14 : HealthBar1 { states { Spawn: EPCE C 0
+goto Spawn2 }}
+actor HealthBar15 : HealthBar1 { states { Spawn: EPCE B 0
+goto Spawn2 }}

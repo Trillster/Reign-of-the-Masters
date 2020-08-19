@@ -1,0 +1,64 @@
+#library "VISE"
+#include "zcommon.acs"
+
+function bool EnemyHealthBarCvar(void)
+{
+	return (EnemyHealthBarCvarServer()&&EnemyHealthBarCvarClient());
+}
+
+function bool EnemyHealthBarCvarClient(void)
+{
+	return (getUserCvar(ConsolePlayerNumber(),"rotm_enemyhealthbar")>0);
+}
+
+function bool EnemyHealthBarCvarServer(void)
+{
+	return (getCvar("rotm_sv_enemyhealthbar")>0);
+}
+
+Script "EnemyHealthBar_Check" (void) CLIENTSIDE
+{
+SetResultValue(EnemyHealthBarCvar());
+}
+
+Script "EnemyHealthChecker" ENTER
+{
+	int h = getActorProperty(0,APROP_Health);
+	int lastH = h;
+	
+	while(h>0) {
+		if(EnemyHealthBarCvarServer()) {
+			if(h<lastH) GiveInventory("EnemyHealthReveal",1);
+			AdjustInventory("EnemyHealthPercent",HealthPercent());
+		}
+		delay(1);
+		lastH = h;
+		h = getActorProperty(0,APROP_Health);
+	}
+}
+
+function int HealthPercent(void) {
+	int health = GetActorProperty(0,APROP_Health);
+	int maxHealth = GetActorProperty(0,APROP_SpawnHealth);
+	if(maxHealth==0) maxHealth = 100;
+	return (100*health/maxHealth);
+}
+
+function void AdjustInventory(str item, int amount)
+{
+AdjustInventory2(item, amount, CheckInventory(item));
+}
+
+function void AdjustInventory2(str item, int amount, int currentamount)
+{
+if(amount>currentAmount) {
+	GiveInventory(item,amount-currentAmount);
+} else if(amount<currentAmount) {
+	TakeInventory(item,currentAmount-amount);
+}
+}
+
+Script "EnemyHealthChecker_R" RESPAWN
+{
+ACS_NamedExecuteAlways("EnemyHealthChecker",0);
+}

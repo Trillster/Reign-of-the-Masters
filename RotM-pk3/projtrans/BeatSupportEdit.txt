@@ -1,0 +1,33 @@
+actor BeatSupportProjectileB : BeatSupportProjectile replaces BeatSupportProjectile
+{
+States
+{
+Spawn:
+BEAT ABCABCABCABC 2 A_SpawnItemEx("BeatSupportTrailFXB",0,0,0,0,0,0,0,SXF_TRANSFERTRANSLATION)
+goto Death
+Death:
+BEAT A 0 A_CustomMissile("BeatSupportReturn",0,0,0,0)
+stop
+}
+}
+
+actor BeatSupportTrailFXB : BeatSupportTrailFX replaces BeatSupportTrailFX
+{
+renderstyle normal
++CLIENTSIDEONLY
+states
+{
+Spawn:
+TNT1 A 0
+TNT1 A 1 A_Jump(256,1,2,3)
+Spawn1:
+BEA0 A 2 A_FadeOut(0.15)
+loop
+Spawn2:
+BEA0 B 2 A_FadeOut(0.15)
+loop
+Spawn3:
+BEA0 C 2 A_FadeOut(0.15)
+loop
+}
+}

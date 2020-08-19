@@ -1,0 +1,46 @@
+actor EnemyHealthBarFunc2 : AllyHealthBarFunc2
+{
+states
+{
+Spawn:
+TNT1 A 0
+TNT1 A 0 A_JumpIf(CallACS("EnemyHealthBar_Check")&&(CallACS("GetTargetHealth")>0),"Spawn1")
+TNT1 A 1
+stop
+Spawn1:
+TNT1 A 0 A_JumpIf(CallACS("GetTargetAlphaPercent")<10,"SpawnNo")
+TNT1 A 0 A_JumpIfInTargetInventory("EnemyHealthReveal",1,"Spawn2")
+TNT1 A 1
+stop
+SpawnNo:
+TNT1 A 1
+stop
+Spawn2:
+TNT1 A 0 A_JumpIfInTargetInventory("EnemyHealthPercent",94,"Health15")
+TNT1 A 0 A_JumpIfInTargetInventory("EnemyHealthPercent",87,"Health14")
+TNT1 A 0 A_JumpIfInTargetInventory("EnemyHealthPercent",81,"Health13")
+TNT1 A 0 A_JumpIfInTargetInventory("EnemyHealthPercent",74,"Health12")
+TNT1 A 0 A_JumpIfInTargetInventory("EnemyHealthPercent",67,"Health11")
+TNT1 A 0 A_JumpIfInTargetInventory("EnemyHealthPercent",61,"Health10")
+TNT1 A 0 A_JumpIfInTargetInventory("EnemyHealthPercent",54,"Health9")
+TNT1 A 0 A_JumpIfInTargetInventory("EnemyHealthPercent",47,"Health8")
+TNT1 A 0 A_JumpIfInTargetInventory("EnemyHealthPercent",41,"Health7")
+TNT1 A 0 A_JumpIfInTargetInventory("EnemyHealthPercent",34,"Health6")
+TNT1 A 0 A_JumpIfInTargetInventory("EnemyHealthPercent",27,"Health5")
+TNT1 A 0 A_JumpIfInTargetInventory("EnemyHealthPercent",21,"Health4")
+TNT1 A 0 A_JumpIfInTargetInventory("EnemyHealthPercent",14,"Health3")
+TNT1 A 0 A_JumpIfInTargetInventory("EnemyHealthPercent",7,"Health2")
+goto Health1
+}
+}
+
+actor EnemyHealthPercent : Inventory
+{
+inventory.amount 1
+inventory.maxamount 100
+}
+
+actor EnemyHealthReveal : Powerup
+{
+Powerup.Duration -5
+}
