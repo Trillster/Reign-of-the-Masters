@@ -1,6 +1,7 @@
 
 #include "Actors/GeneralThings.txt"
 #include "Actors/ConstIntList.txt"
+#include "Actors/ItemReplace.txt"
 #include "Actors/ClassBases/classbases.txt"
 #include "projtrans/SakugarneEdit.txt"
 #include "projtrans/BeatSupportEdit.txt"
