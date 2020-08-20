@@ -11,7 +11,7 @@ Script "ROTM_Translations" OPEN
 //CreateTranslation(COLOR_COSSACK, 192:192=104:104, 198:198=128:128);
 //CreateTranslation(COLOR_KING, 192:192=229:229, 198:198=232:232);
 //243:247=0:0
-
+Delay(25);//safety measure to prevent map load crashes
 CreateTranslation(CUTMAN, 192:192=4:4, 198:198=41:41, 199:199=96:96, 202:202=4:4);
 CreateTranslation(QUICKMAN, 192:192=229:229, 198:198=41:41);
 }

@@ -6,9 +6,6 @@
 
 #DEFINE MAX_PLAYERS 63 //0-31//0-63
 
-#DEFINE C_CHECK_TRACER_OOC 650 //see notes in other file
-#DEFINE C_CHECK_MASTER_OOC 651
-
 script "ROTM_Knockback" (int force)
 {
 int pusher = ACS_NamedExecuteWithResult("core_gettarget");
@@ -17,56 +14,30 @@ int vAng = VectorAngle(GetActorX(0) - GetActorX(pusher), GetActorY(0) - GetActor
 ThrustThing(vAng, force, 1, 0);
 }
 
-//TOOLS.ACS
-Script "ROTM_ReturnGamemode" (int checkmode)
+script "ROTM_MasterExists" (void) //core_targetexists handles tracer too, just no master argument, v6 might fix this??
 {
-Switch(CheckMode)
-	{
-	Case 0:
-	if(GetCvar("deathmatch")==1){SetResultValue(0);}
-	if(GetCvar("possession")==1){SetResultValue(1);}
-	if(GetCvar("teampossession")==1){SetResultValue(1);}
-	if(GetCvar("lastmanstanding")==1){SetResultValue(2);}
-	if(GetCvar("teamlms")==1){SetResultValue(2);}
-	if(GetCvar("duel")==1){SetResultValue(3);}
-	if(GetCvar("ctf")==1){SetResultValue(4);}
-	if(GetCvar("oneflagctf")==1){SetResultValue(4);}
-	if(GetCvar("teamgame")==1){SetResultValue(4);}
-	if(GetCvar("terminator")==1){SetResultValue(5);}
-	break;
+	bool result = 1;
 	
-	Case 1:
-	if(GetCvar("cooperative")==1){SetResultValue(1);}
-	if(GetCvar("survival")==1){SetResultValue(1);}
-	if(GetCvar("deathmatch")==1){SetResultValue(0);}
-	if(GetCvar("possession")==1){SetResultValue(0);}
-	if(GetCvar("teampossession")==1){SetResultValue(1);}
-	if(GetCvar("lastmanstanding")==1){SetResultValue(0);}
-	if(GetCvar("teamlms")==1){SetResultValue(1);}
-	if(GetCvar("duel")==1){SetResultValue(0);}
-	if(GetCvar("ctf")==1){SetResultValue(1);}
-	if(GetCvar("oneflagctf")==1){SetResultValue(1);}
-	if(GetCvar("teamgame")==1){SetResultValue(1);}
-	if(GetCvar("teamplay")==1){SetResultValue(1);}
-	if(GetCvar("terminator")==1){SetResultValue(0);}
-	break;
+    SetActivator(0, AAPTR_MASTER);
 	
-	Case 2:
-	int ReturnThis = 0;
-	if(GetCvar("instagib")==1){ReturnThis=1;}
-	if(GetCvar("buckshot")==1){ReturnThis=2;}
-	SetResultValue(ReturnThis);
-	break;
+	if(ClassifyActor(0) & ACTOR_PLAYER){
+		if(PlayerNumber() == -1 || CheckInventory("IsDead") || !PlayerInGame(PlayerNumber())){
+			result = 0; 
+		}
 	}
-
+	else
+	{
+		if(ClassifyActor(0) == 0){result = 0;}
+	}
+	SetResultValue(result);
 }
 
 script "ROTM_MainEnter" ENTER
 {
 	GiveInventory("IsInGame",1);
-	//GiveInventory("PowerNoGravityFix",1);//Ask Celebi why this is given
+	//GiveInventory("PowerNoGravityFix",1); //Ask Celebi why this is given [fixes weirdness with +NOGRAVITY flag on players, zan 3.0 snuck in some changes to it that were undesirable - Trill]
 	//GiveInventory("SpawnTelefragFixPickup",1);
-	//GiveInventory("StaminaFlag",500);
+	//GiveInventory("StaminaFlag",500); //Maybe consider overarching gamemode changes to solve stall issues than bandaid fixes on a class basis? LMSGas enabled for pubbers and penalties for priv'ers??
 }
 
 script "ROTM_MainRespawn" RESPAWN
@@ -74,13 +45,15 @@ script "ROTM_MainRespawn" RESPAWN
 ACS_NamedExecuteAlways("ROTM_MainEnter",0);
 }
 
+//the following code is bad, this doesn't work with core_copytranslation, literally the only reason that this array exists, look into biting the bullet and copying GLOBAL
+//you need GLOBAL for jump canceller script regardless, so it's a worthy copy, just track your changes and know what you'll need to reapply come v6
 // [Mike] Player Translations
-int ROTMPlayerTranslation[64];
+int ROTMPlayerTranslation[64]; 
 BOOL ROTMIsTeamGame = 0; // Is mode a team game?
 
 Script "ROTM_ApplyColor" (int weap, int nosound) //$CBM
 {
-	ROTMIsTeamGame = ACS_NamedExecuteWithResult("ROTM_ReturnGamemode", 1);
+	ROTMIsTeamGame = ACS_ExecuteWithResult(975, 1);
 	
 	if(nosound==0){LocalAmbientSound("menu/cursor",127);} //Play weapon switch noise
 
@@ -175,7 +148,7 @@ Script "ROTM_ApplyColor" (int weap, int nosound) //$CBM
 			}
 		}
 
-	else if(nosound<=1) {
+	else if(nosound<=1) {//nice copy and paste for the non existant copywep classes MGO
 		if(CheckInventory("DocBusterC")) {
 			weap = 10768;
 			//ACS_ExecuteAlways(648,0,9);
